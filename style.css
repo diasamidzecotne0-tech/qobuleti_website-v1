@@ -1,0 +1,477 @@
+
+/* ყველა ელემენტის საწყისი პარამეტრები */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #17334b;
+    background: #ffffff;
+    line-height: 1.7;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+.container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+.section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.25;
+}
+
+h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 20px;
+}
+
+p {
+    color: #62778a;
+}
+
+/* ნავიგაციის ზოლი */
+.header {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 20px rgba(20, 60, 90, 0.07);
+}
+
+.navbar {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    color: #173b60;
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #42a5d5;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #299bd0;
+}
+
+.menu-btn {
+    display: none;
+    border: none;
+    background: #eaf6fc;
+    color: #173b60;
+    font-size: 1.7rem;
+    padding: 5px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* მთავარი სექცია */
+.hero {
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 6%;
+    background:
+        linear-gradient(
+            rgba(9, 38, 64, 0.55),
+            rgba(9, 38, 64, 0.65)
+        ),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: appear 1s ease;
+}
+
+.eyebrow {
+    color: #299bd0;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.hero .eyebrow {
+    color: #aee5ff;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    margin-bottom: 22px;
+}
+
+.hero p:not(.eyebrow) {
+    color: #f0f8ff;
+    font-size: 1.08rem;
+    max-width: 650px;
+    margin: 0 auto 32px;
+}
+
+/* ღილაკები */
+.btn {
+    display: inline-block;
+    border: 0;
+    border-radius: 30px;
+    background: #258fc5;
+    color: white;
+    padding: 14px 27px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    background: #176fa0;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 143, 197, 0.25);
+}
+
+/* ღილაკზე დაჭერის ანიმაცია */
+.btn.clicked {
+    animation: buttonPulse 0.5s ease;
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.92);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ქობულეთის შესახებ */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.description {
+    margin-bottom: 25px;
+}
+
+.about-image {
+    height: 360px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(20, 60, 90, 0.12);
+}
+
+.text-link {
+    color: #218ac0;
+    font-weight: 700;
+}
+
+/* ღირსშესანიშნაობების ბარათები */
+.places-section {
+    background: #f1f8fc;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 45px;
+}
+
+.section-heading > p:last-child {
+    margin-top: 10px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(30, 75, 105, 0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 35px rgba(30, 75, 105, 0.14);
+}
+
+.card img {
+    height: 220px;
+}
+
+.card-content {
+    padding: 24px;
+}
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+/* საზაფხულო აქტივობები */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.event {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 25px;
+    background: #f1f8fc;
+    border-radius: 18px;
+    border: 1px solid #e1eff7;
+}
+
+.event-icon {
+    font-size: 2rem;
+}
+
+.event h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.note {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* საკონტაქტო სექცია */
+.contact-section {
+    background: #eaf5fb;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.contact-form {
+    background: white;
+    padding: 30px;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(20, 60, 90, 0.07);
+}
+
+.contact-form label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d4e4ed;
+    border-radius: 10px;
+    outline: none;
+    background: #fbfdff;
+    color: #17334b;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #299bd0;
+    box-shadow: 0 0 0 3px rgba(41, 155, 208, 0.12);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-message {
+    margin-top: 12px;
+    color: #187c58;
+    font-weight: 600;
+}
+
+/* ქვედა ნაწილი */
+.footer {
+    background: #12334d;
+    padding: 35px 0;
+    text-align: center;
+    color: white;
+}
+
+.footer-logo {
+    color: white;
+}
+
+.footer-content p {
+    color: #d3e4ef;
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+/* პლანშეტები და მცირე ეკრანები */
+@media (max-width: 850px) {
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 12px 20px rgba(20, 60, 90, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+        animation: appear 0.3s ease;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .cards,
+    .events-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ტელეფონის ეკრანი */
+@media (max-width: 550px) {
+    .section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .hero {
+        min-height: 520px;
+        padding: 60px 5%;
+    }
+
+    .cards,
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 260px;
+    }
+
+    .contact-form {
+        padding: 22px;
+    }
+
+    .event {
+        padding: 20px;
+    }
+}
+
+/* ანიმაციის შემცირების პარამეტრის პატივისცემა */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

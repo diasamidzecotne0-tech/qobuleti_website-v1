@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="აღმოაჩინე ქობულეთის ზღვა, ბუნება და ღირსშესანიშნაობები.">
+    <title>ქობულეთი | ზღვისპირა ქალაქი</title>
+
+    <!-- CSS ფაილის დაკავშირება -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ნავიგაცია -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#home" class="logo">Kobuleti<span>.</span></a>
+
+            <button class="menu-btn" id="menuBtn"
+                    aria-label="მენიუს გახსნა"
+                    aria-expanded="false">
+                ☰
+            </button>
+
+// მობილური მენიუს ელემენტები
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+// მენიუს გახსნა და დახურვა
+menuBtn.addEventListener("click", function () {
+    const isOpen = navLinks.classList.toggle("active");
+
+    menuBtn.setAttribute("aria-expanded", isOpen);
+    menuBtn.setAttribute(
+        "aria-label",
+        isOpen ? "მენიუს დახურვა" : "მენიუს გახსნა"
+    );
+
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+});
+
+// მენიუს დახურვა ბმულზე დაჭერისას
+document.querySelectorAll(".nav-links a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.setAttribute("aria-label", "მენიუს გახსნა");
+        menuBtn.textContent = "☰";
+    });
+});
+
+// ყველა ღილაკზე დაჭერის ანიმაცია
+document.querySelectorAll(".btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+        button.classList.remove("clicked");
+
+        // ანიმაციის ხელახლა გასაშვებად
+        void button.offsetWidth;
+
+        button.classList.add("clicked");
+    });
+});
+
+// საკონტაქტო ფორმა
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+
+contactForm.addEventListener("submit", function (event) {
+    // გვერდის თავიდან ჩატვირთვის შეჩერება
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+
+    if (name.length === 0) {
+        formMessage.textContent = "გთხოვ, შეიყვანე შენი სახელი.";
+        return;
+    }
+
+    // დემო შეტყობინება — მონაცემები სერვერზე არ იგზავნება
+    formMessage.textContent =
+        "მადლობა, " + name + "! ფორმა წარმატებით შეივსო.";
+
+    contactForm.reset();
+});
+
+// მიმდინარე წლის ავტომატურად ჩვენება
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">მთავარი</a></li>
+                <li><a href="#about">ჩვენ შესახებ</a></li>
+                <li><a href="#places">ღირსშესანიშნაობები</a></li>
+                <li><a href="#events">ღონისძიებები</a></li>
+                <li><a href="#contact">კონტაქტი</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- მთავარი სექცია -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">აღმოაჩინე აჭარის სილამაზე</p>
+                <h1>ქობულეთი — შენი საზაფხულო თავგადასავალი</h1>
+                <p>
+                    ზღვის ლურჯი ტალღები, მწვანე ბუნება და
+                    დაუვიწყარი დღეები შავი ზღვის სანაპიროზე.
+                </p>
+
+                <a href="#places" class="btn">აღმოაჩინე ქალაქი</a>
+            </div>
+        </section>
+
+        <!-- ქობულეთის შესახებ -->
+        <section class="section container" id="about">
+            <div class="about-grid">
+                <div>
+                    <p class="eyebrow">ჩვენ შესახებ</p>
+                    <h2>ქალაქი, სადაც ზღვა და ბუნება ერთიანდება</h2>
+                    <p class="description">
+                        ქობულეთი აჭარაში, შავი ზღვის სანაპიროზე მდებარე
+                        პოპულარული საკურორტო ქალაქია. იგი ცნობილია
+                        სანაპიროთი, ფიჭვნარებითა და მშვიდი გარემოთი.
+                        ქალაქის შემოგარენში შეხვდები ულამაზეს ბუნებასა
+                        და ისტორიულ ძეგლებს.
+                    </p>
+                    <a href="#contact" class="text-link">გაიგე მეტი →</a>
+                </div>
+
+                <img
+                    class="about-image"
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
+                    alt="ზღვის სანაპირო და ლურჯი ტალღები"
+                    loading="lazy"
+                >
+            </div>
+        </section>
+
+        <!-- ღირსშესანიშნაობები -->
+        <section class="section places-section" id="places">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">აღმოაჩინე</p>
+                    <h2>მთავარი ღირსშესანიშნაობები</h2>
+                    <p>ადგილები, რომლებიც ქობულეთში მოგზაურობას გაგილამაზებს.</p>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <img
+                            src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80"
+                            alt="ზღვის ტალღები"
+                            loading="lazy"
+                        >
+                        <div class="card-content">
+                            <h3>ქობულეთის სანაპირო</h3>
+                            <p>
+                                გაისეირნე ზღვის პირას, დატკბი ტალღების
+                                ხმაურით და ულამაზესი ხედებით.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img
+                            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+                            alt="მწვანე ტყე"
+                            loading="lazy"
+                        >
+                        <div class="card-content">
+                            <h3>ქობულეთის დაცული ტერიტორიები</h3>
+                            <p>
+                                გაეცანი უნიკალურ ჭარბტენიან ბუნებას,
+                                მცენარეებსა და ფრინველებს.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img
+                            src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=800&q=80"
+                            alt="ხეებით გარშემორტყმული ბილიკი"
+                            loading="lazy"
+                        >
+                        <div class="card-content">
+                            <h3>ქობულეთის ზღვისპირა პარკი</h3>
+                            <p>
+                                დაისვენე გამწვანებულ გარემოში და
+                                სასიამოვნოდ გაატარე თავისუფალი დრო.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- საზაფხულო ღონისძიებები -->
+        <section class="section container" id="events">
+            <div class="section-heading">
+                <p class="eyebrow">ზაფხული ქობულეთში</p>
+                <h2>საზაფხულო აქტივობები</h2>
+                <p>
+                    იდეები, რომლებიც ზაფხულის დღეებს უფრო საინტერესოს გახდის.
+                </p>
+            </div>
+
+            <div class="events-grid">
+                <div class="event">
+                    <span class="event-icon">☀️</span>
+                    <div>
+                        <h3>ზღვისპირა დასვენება</h3>
+                        <p>სეირნობა, ზღვის ხედები და სანაპიროზე დროის გატარება.</p>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <span class="event-icon">🎶</span>
+                    <div>
+                        <h3>ღია ცის ქვეშ კონცერტები</h3>
+                        <p>მუსიკალური საღამოები და ადგილობრივი კულტურული პროგრამები.</p>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <span class="event-icon">🎨</span>
+                    <div>
+                        <h3>კულტურული ღონისძიებები</h3>
+                        <p>გამოფენები, ხელნაკეთი ნივთები და შემოქმედებითი აქტივობები.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="note">
+                შენიშვნა: ღონისძიებები საილუსტრაციო მაგალითებია.
+                კონკრეტული თარიღები და პროგრამა გადაამოწმე ორგანიზატორებთან.
+            </p>
+        </section>
+
+        <!-- საკონტაქტო ფორმა -->
+        <section class="section contact-section" id="contact">
+            <div class="container contact-grid">
+                <div>
+                    <p class="eyebrow">დაგვიკავშირდი</p>
+                    <h2>მოგვწერე შენი აზრი</h2>
+                    <p>
+                        გაქვს შეკითხვა ქობულეთის შესახებ?
+                        შეავსე ფორმა და დატოვე შეტყობინება.
+                    </p>
+                </div>
+
+                <form id="contactForm" class="contact-form">
+                    <label for="name">სახელი</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="შეიყვანე სახელი"
+                        required
+                    >
+
+                    <label for="email">ელფოსტა</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="შეიყვანე ელფოსტა"
+                        required
+                    >
+
+                    <label for="message">შეტყობინება</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        placeholder="დაწერე შეტყობინება..."
+                        required
+                    ></textarea>
+
+                    <button type="submit" class="btn submit-btn">
+                        შეტყობინების გაგზავნა
+                    </button>
+
+                    <p id="formMessage" class="form-message" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ქვედა ნაწილი -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <a href="#home" class="logo footer-logo">Kobuleti<span>.</span></a>
+            <p>აღმოაჩინე ქობულეთი და შეიყვარე ზღვისპირა ცხოვრება.</p>
+            <p>© <span id="year"></span> Kobuleti. ყველა უფლება დაცულია.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript ფაილის დაკავშირება -->
+    <script src="script.js"></script>
+</body>
+</html>
